@@ -196,11 +196,7 @@
       iterator = _.identity;
     }
     return _.reduce(collection, function(sum, colVal){
-      if (!sum) {
-        return false;
-      } else {
-        return Boolean(iterator(colVal));
-      }
+      return (!sum) ? false : Boolean(iterator(colVal)); 
     }, true)
   };
 
