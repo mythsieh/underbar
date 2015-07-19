@@ -208,6 +208,13 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    // Use _.every to check for all false, all false --> true --> false, not all false --> false --> true
+    if (iterator === undefined) {
+      iterator = _.identity;
+    }
+    return (_.every(collection, function(colVal){
+      return (!Boolean(iterator(colVal)));
+    })) ? false : true;
   };
 
 
